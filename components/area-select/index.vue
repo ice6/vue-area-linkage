@@ -284,20 +284,43 @@
             },
 
             setDefaultValue () {
-                let provinceCode = '';
-
+                let provinceCode = '', cityCode = '', areaCode = ''
                 if (this.isCode) {
                     provinceCode = this.defaults[0];
+                    if (this.curProvinceCode == provinceCode) {
+                        cityCode = this.defaults[1];
+                    }
+                    if (this.cityCode == cityCode) {
+                        areaCode = this.defaults[2];
+                    }
                 } else {
                     const province = find(this.provinces, (item) => item === this.defaults[0]);
                     assert(province, `省份 ${this.defaults[0]} 不存在`);
                     provinceCode = find(Object.keys(this.provinces), (item) => this.provinces[item] === this.defaults[0]);
+                    let city = ''
+                    if (this.curProvinceCode == provinceCode) {
+                        city = find(this.citys, (item) => item === this.defaults[1]);
+                        assert(city, `${province}下不存在城市${this.defaults[1]}`);
+                        cityCode = find(Object.keys(this.citys), (item) => this.citys[item] === this.defaults[1]);
+                    }
+                    if (this.curCityCode == cityCode) {
+                        const area = find(this.areas, (item) => item === this.defaults[2]);
+                        assert(area, `${area}不存在`);
+                        areaCode = find(Object.keys(this.areas), (item) => this.areas[item] === this.defaults[2]);
+                    }
                 }
+                
                 this.curProvinceCode = provinceCode;
+                if (cityCode != '') {
+                    this.curCityCode = cityCode
+                }
+                if (areaCode != '') {
+                    this.curAreaCode = areaCode
+                }
+                
                 // 还原默认值，避免用户选择出错
                 this.$nextTick(() => {
                     this.defaults = [];
-                    // this.isCode = false;
                     this.isSetDefault = false;
                 });
             },
