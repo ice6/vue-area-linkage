@@ -1,7 +1,7 @@
 <template>
     <div class="code-area">
         <div class="area-left">
-            <area-select :level="2" v-model="selected" :data="$pcaa"></area-select>
+            <area-select :level="2" v-model="selected" :data="$pcaa" type="text"></area-select>
         </div>
         <div class="area-right">
             <pre><code>{{selected}}</code></pre>
@@ -19,13 +19,18 @@
     export default {
         data() {
             return {
-                selected: ['440000','440300','440305'],
-                shown: false
+                selected: ['河北省','唐山市','路南区'],
+                shown: false,
             }
         },
         methods: {
             toggle() {
                 this.shown = !this.shown;
+                if (this.selected[2] == '路南区') {
+                    this.selected = ['河北省','石家庄市','长安区']
+                } else {
+                    this.selected = ['河北省','唐山市', '路南区']
+                }
             }
         }
     };
