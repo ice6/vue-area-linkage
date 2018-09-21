@@ -4039,7 +4039,6 @@ var option_Component = option_normalizeComponent(
             var provinceCode = '',
                 cityCode = '',
                 areaCode = '';
-
             if (this.isCode) {
                 provinceCode = this.defaults[0];
                 if (this.curProvinceCode == provinceCode) {
@@ -4056,8 +4055,9 @@ var option_Component = option_normalizeComponent(
                 provinceCode = _lodash_find_4_6_0_lodash_find_default()(keys_default()(this.provinces), function (item) {
                     return _this3.provinces[item] === _this3.defaults[0];
                 });
+                var city = '';
                 if (this.curProvinceCode == provinceCode) {
-                    var city = _lodash_find_4_6_0_lodash_find_default()(this.citys, function (item) {
+                    city = _lodash_find_4_6_0_lodash_find_default()(this.citys, function (item) {
                         return item === _this3.defaults[1];
                     });
                     Object(utils["a" /* assert */])(city, province + '\u4E0B\u4E0D\u5B58\u5728\u57CE\u5E02' + this.defaults[1]);
@@ -4065,11 +4065,11 @@ var option_Component = option_normalizeComponent(
                         return _this3.citys[item] === _this3.defaults[1];
                     });
                 }
-                if (this.cityCode == cityCode) {
+                if (this.curCityCode == cityCode) {
                     var area = _lodash_find_4_6_0_lodash_find_default()(this.areas, function (item) {
                         return item === _this3.defaults[2];
                     });
-                    Object(utils["a" /* assert */])(area, area + '\u4E0D\u5728');
+                    Object(utils["a" /* assert */])(area, area + '\u4E0D\u5B58\u5728');
                     areaCode = _lodash_find_4_6_0_lodash_find_default()(keys_default()(this.areas), function (item) {
                         return _this3.areas[item] === _this3.defaults[2];
                     });
@@ -4087,7 +4087,6 @@ var option_Component = option_normalizeComponent(
             // 还原默认值，避免用户选择出错
             this.$nextTick(function () {
                 _this3.defaults = [];
-                // this.isCode = false;
                 _this3.isSetDefault = false;
             });
         },
@@ -4118,7 +4117,7 @@ var option_Component = option_normalizeComponent(
         }
     }
 });
-// CONCATENATED MODULE: ./node_modules/_vue-loader@13.7.3@vue-loader/lib/template-compiler?{"id":"data-v-088a9597","hasScoped":false,"buble":{"transforms":{}}}!./node_modules/_vue-loader@13.7.3@vue-loader/lib/selector.js?type=template&index=0!./components/area-select/index.vue
+// CONCATENATED MODULE: ./node_modules/_vue-loader@13.7.3@vue-loader/lib/template-compiler?{"id":"data-v-411a68e2","hasScoped":false,"buble":{"transforms":{}}}!./node_modules/_vue-loader@13.7.3@vue-loader/lib/selector.js?type=template&index=0!./components/area-select/index.vue
 var area_select_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"area-select-wrap"},[_c('v-select',{attrs:{"placeholder":_vm.placeholders[0] ? _vm.placeholders[0] : '请选择',"size":_vm.size,"disabled":_vm.disabled},model:{value:(_vm.curProvinceCode),callback:function ($$v) {_vm.curProvinceCode=$$v},expression:"curProvinceCode"}},_vm._l((_vm.provinces),function(val,key){return _c('v-option',{key:key,attrs:{"label":val,"value":key}})})),_vm._v(" "),(_vm.level>=1)?_c('v-select',{attrs:{"placeholder":_vm.placeholders[1] ? _vm.placeholders[1] : '请选择',"size":_vm.size,"disabled":_vm.disabled},model:{value:(_vm.curCityCode),callback:function ($$v) {_vm.curCityCode=$$v},expression:"curCityCode"}},[(!Object.keys(_vm.citys).length)?_c('p',{staticClass:"area-select-empty"},[_vm._v("暂无数据")]):_vm._l((_vm.citys),function(val,key){return _c('v-option',{key:key,attrs:{"label":val,"value":key}})})],2):_vm._e(),_vm._v(" "),(_vm.level>=2)?_c('v-select',{attrs:{"placeholder":_vm.placeholders[2] ? _vm.placeholders[2] : '请选择',"size":_vm.size,"disabled":_vm.disabled},model:{value:(_vm.curAreaCode),callback:function ($$v) {_vm.curAreaCode=$$v},expression:"curAreaCode"}},[(!Object.keys(_vm.areas).length)?_c('p',{staticClass:"area-select-empty"},[_vm._v("暂无数据")]):_vm._l((_vm.areas),function(val,key){return _c('v-option',{key:key,attrs:{"label":val,"value":key}})})],2):_vm._e()],1)}
 var area_select_staticRenderFns = []
 var area_select_esExports = { render: area_select_render, staticRenderFns: area_select_staticRenderFns }
@@ -4172,7 +4171,7 @@ var content = __webpack_require__(55);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(57)("3af4736e", content, true, {});
+var update = __webpack_require__(57)("0f9e294c", content, true, {});
 
 /***/ }),
 /* 55 */

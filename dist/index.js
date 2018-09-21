@@ -3938,7 +3938,6 @@ if (false) {(function () {
             var provinceCode = '',
                 cityCode = '',
                 areaCode = '';
-
             if (this.isCode) {
                 provinceCode = this.defaults[0];
                 if (this.curProvinceCode == provinceCode) {
@@ -3955,8 +3954,9 @@ if (false) {(function () {
                 provinceCode = _lodash_find_4_6_0_lodash_find_default()(keys_default()(this.provinces), function (item) {
                     return _this3.provinces[item] === _this3.defaults[0];
                 });
+                var city = '';
                 if (this.curProvinceCode == provinceCode) {
-                    var city = _lodash_find_4_6_0_lodash_find_default()(this.citys, function (item) {
+                    city = _lodash_find_4_6_0_lodash_find_default()(this.citys, function (item) {
                         return item === _this3.defaults[1];
                     });
                     assert(city, province + '\u4E0B\u4E0D\u5B58\u5728\u57CE\u5E02' + this.defaults[1]);
@@ -3964,11 +3964,11 @@ if (false) {(function () {
                         return _this3.citys[item] === _this3.defaults[1];
                     });
                 }
-                if (this.cityCode == cityCode) {
+                if (this.curCityCode == cityCode) {
                     var area = _lodash_find_4_6_0_lodash_find_default()(this.areas, function (item) {
                         return item === _this3.defaults[2];
                     });
-                    assert(area, area + '\u4E0D\u5728');
+                    assert(area, area + '\u4E0D\u5B58\u5728');
                     areaCode = _lodash_find_4_6_0_lodash_find_default()(keys_default()(this.areas), function (item) {
                         return _this3.areas[item] === _this3.defaults[2];
                     });
@@ -3986,7 +3986,6 @@ if (false) {(function () {
             // 还原默认值，避免用户选择出错
             this.$nextTick(function () {
                 _this3.defaults = [];
-                // this.isCode = false;
                 _this3.isSetDefault = false;
             });
         },

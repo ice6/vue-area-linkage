@@ -303,7 +303,7 @@
                         assert(city, `${province}下不存在城市${this.defaults[1]}`);
                         cityCode = find(Object.keys(this.citys), (item) => this.citys[item] === this.defaults[1]);
                     }
-                    if (this.curCityCode == cityCode) {
+                    if (this.curCityCode != '' && this.curCityCode == cityCode) {
                         const area = find(this.areas, (item) => item === this.defaults[2]);
                         assert(area, `${area}不存在`);
                         areaCode = find(Object.keys(this.areas), (item) => this.areas[item] === this.defaults[2]);
@@ -338,6 +338,8 @@
                 }
                 this.$emit('input', res);
                 this.$emit('change', res);
+
+                this.isSetDefault = false;
             }
         },
 
